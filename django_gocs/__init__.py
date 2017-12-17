@@ -204,7 +204,7 @@ class GoogleCloudStorage(Storage):
 
     def url(self, name):
         if self.force_use_gcs or is_gae_server():
-            return '{}/{}'.format(self.base_url, name)
+            return '{}{}/{}'.format(self.base_url, settings.GOOGLE_CLOUD_STORAGE_BUCKET, name)
 
         # we need this in order to display images, links to files, etc
         # from the local appengine server
