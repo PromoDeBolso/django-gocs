@@ -95,6 +95,18 @@ class GoogleCloudStorage(Storage):
         self.base_url = base_url
         self.force_use_gcs = force_use_gcs
 
+    def mount_bucket_path(self, image_name, url):
+        env = settings.ENV
+        path = 'INVALID PATH'
+        if env == 'dev':
+            path = url
+        else:
+            try:
+                path = '{}{}/{}'.format(self.base_url, self.location, image_name)
+            except:
+                pass
+        return path
+
     def _open(self, name, mode='r'):
         filename = '{}/{}'.format(self.location, name)
 
