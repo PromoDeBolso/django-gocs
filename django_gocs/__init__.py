@@ -213,7 +213,7 @@ class GoogleCloudStorage(Storage):
         filename = '/gs{}/{}'.format(self.location, name)
         key = create_gs_key(filename)
         local_base_url = getattr(settings, 'GOOGLE_CLOUD_STORAGE_DEV_URL',
-                                 'http://localhost:8001/blobstore/blob/')
+                                 'http://localhost:8000/blobstore/blob/')
         return '{}{}?display=inline'.format(local_base_url, key)
 
     def statFile(self, name):
